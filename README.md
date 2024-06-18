@@ -1,39 +1,30 @@
-# [Form validation problem](https://github.com/Inquisitive-Learners/form-validation-problem)
+# React + TypeScript + Vite
 
-We've created this problem to evaluate how developers tackle a real-world problem. If you've been assigned this problem you should spend around **2 hours** working on it. The last thing we want you to do is toil away for days on end!
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-If you've stumbled across this and want to work at [Inquisitive](https://www.inquisitive.com/) feel free to submit it too. We're always on the lookout for skilled developers.
+Currently, two official plugins are available:
 
-## Problem definition
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-Included in this repository is an [index.html](index.html) file that contains a form. Your task is to convert this form into a React application. You must ensure all of the following rules are met before the form is posted to the (in this case imaginary) server:
+## Expanding the ESLint configuration
 
-* `Email` must be a valid email address.
-* `Password` must be longer than 8 characters.
-* `Colour` must be selected.
-* At least two `Animals` must be chosen.
-* If `Tiger` is one of the chosen `Animal`s then `Type of tiger` is required to be a non-empty string.
+If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
 
-## Other requirements
+- Configure the top-level `parserOptions` property like this:
 
-If the form is submitted and an error occurs, the error element's parent should have a CSS `error` class added to it.
-
-```html
-<p class="error">
-    <label for="field"></label>
-    <input id="field" type="text" value="foo">
-</p>
+```js
+export default {
+  // other rules...
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module',
+    project: ['./tsconfig.json', './tsconfig.node.json'],
+    tsconfigRootDir: __dirname,
+  },
+}
 ```
 
-## The cherry on the cake
-
-Beyond the problem statement, show us the consideration you have given to some or all of the following:
-
-- Accessibility
-- UX / usability 
-- Browser support / compatibility
-- Testing
-
-## Submission
-
-Please fork our repository, build your solution and email a link to `rose.pollock@inquisitive.com`.
+- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
+- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
+- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
