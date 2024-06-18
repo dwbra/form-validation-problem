@@ -26,8 +26,6 @@ const CheckboxInput = ({
     const handleChange = (
         event: React.ChangeEvent<HTMLInputElement>
     ) => {
-        console.log(meta.error);
-        console.log(meta.touched);
         const { value } = event.target;
         const updatedValues = field.value.includes(value)
             ? field.value.filter((val: string) => val !== value)
@@ -38,27 +36,33 @@ const CheckboxInput = ({
 
     return (
         <fieldset
+            aria-describedby={`${name}Error`}
             className={`${className ?? ''} ${meta.touched && meta.error ? 'error' : ''}`}
         >
             <legend>{label}</legend>
             <div role="group" aria-labelledby="checkbox-group">
                 {['Cat', 'Dog', 'Tiger'].map(animal => (
-                    <label key={animal}>
+                    <div className="checkbox-content" key={animal}>
                         <input
                             type="checkbox"
                             id={`${name}-${animal}`}
-                            name={`${name}-${animal}`}
+                            name={name}
                             value={animal}
                             checked={field.value.includes(animal)}
                             onChange={handleChange}
                             aria-labelledby={`${name}-${animal}-label`}
                         />
-                        {animal}
-                    </label>
+                        <label
+                            id={`${name}-${animal}-label`}
+                            htmlFor={`${name}-${animal}`}
+                        >
+                            {animal}
+                        </label>
+                    </div>
                 ))}
             </div>
             {meta.touched && meta.error ? (
-                <span id={`${name}-error`}>{meta.error}</span>
+                <span id={`${name}Error`}>{meta.error}</span>
             ) : null}
         </fieldset>
     );

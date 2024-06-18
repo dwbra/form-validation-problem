@@ -3,6 +3,8 @@
     "private": true,
     "version": "0.0.0",
     "type": "module",
+    "author": "Daniel Workman",
+    "license": "MIT",
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
@@ -29,5 +31,8 @@
         "prettier": "^3.3.2",
         "typescript": "^5.2.2",
         "vite": "^5.2.0"
+    },
+    "volta": {
+        "node": "20.14.0"
     }
 }
